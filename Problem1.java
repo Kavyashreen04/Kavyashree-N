@@ -20,13 +20,12 @@ public class Problem1 {
             case "mul":
                 return a * b;
             case "div":
-                try{
-                    return a/b;
+                if (b == 0) {
+                    System.err.println("Cannot divide by zero");
                 }
-                catch(ArithmeticException e)
-                {
-                    System.out.println("value of b cannot be zero");
-                }
+                else
+                return a / b;
+
             default:return 0;
         }
     }
