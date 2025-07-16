@@ -1,1 +1,152 @@
 //Programming language -Java 
+
+
+
+//Problem 1
+import java.util.Scanner;
+
+public class Problem1 {
+    public double a;
+    public double b;
+    public String typeOfOperation;
+
+    public Problem1(double a, double b, String typeOfOperation) {
+        this.a = a;
+        this.b = b;
+        this.typeOfOperation = typeOfOperation;
+    }
+
+    public double calculateMethod() {
+        switch (typeOfOperation.toLowerCase()) {
+            case "add":
+                return a + b;
+            case "sub":
+                return a - b;
+            case "mul":
+                return a * b;
+            case "div":
+                if (b == 0) {
+                    System.err.println("Cannot divide by zero");
+                }
+                else
+                return a / b;
+
+            default:return 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the first number: ");
+        double a = sc.nextDouble();
+        System.out.print("Enter the second number: ");
+        double b = sc.nextDouble();
+        System.out.print("Enter the operation (add, sub, mul, div): ");
+        String operation = sc.next();
+        Problem1 cal1 = new Problem1(a, b, operation);
+        try {
+            System.out.println("Result: " + cal1.calculateMethod());
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+
+//problem2
+import java.util.Scanner;
+
+public class Problem2{
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter the value of a");
+        int a=sc.nextInt();
+
+        for(int i=1;i<=a;i++)
+        {
+            if(i%2!=0)
+            {
+            System.out.print(i);
+            if(i+2<=a)
+            System.out.print(", ");
+            }
+           
+        }
+    }
+}
+
+
+
+
+
+
+
+//problem3
+import java.util.Scanner;
+
+public class Problem3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of a: ");
+        int a = sc.nextInt();
+        int n = (a % 2 == 0) ? a - 1 : a;
+        for (int i = 1; i <= n * 2 - 1; i += 2) {
+            System.out.print(i);
+            if (i + 2 <= n * 2 - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+//problem4
+import java.util.*;
+
+public class Problem4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the list of numbers separated by spaces:");
+        String numList = scanner.nextLine();
+
+        String[] numArray = numList.trim().split(" ");
+        int[] numbers = new int[numArray.length];
+        for (int i = 0; i < numArray.length; i++) {
+            numbers[i] = Integer.parseInt(numArray[i]);
+        }
+
+
+        Map<Integer, Integer> result = new LinkedHashMap<>();
+        for (int i = 1; i <= 9; i++) {
+            result.put(i, 0);
+        }
+
+        for (int num : numbers) {
+            for (int i = 1; i <= 9; i++) {
+                if (num % i == 0) {
+                    result.put(i, result.get(i) + 1);
+                }
+            }
+        }
+
+        System.out.print("{ ");
+        for (int i = 1; i <= 9; i++) {
+            if(i<9)
+            System.out.print(i+":"+result.get(i)+" ,");
+            else
+            System.out.print(i+":"+result.get(i));
+        }
+        System.out.println(" }");
+    }
+}
